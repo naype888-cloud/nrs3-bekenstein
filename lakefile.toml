@@ -1,0 +1,13 @@
+name = "NRS3Bekenstein"
+defaultTargets = ["NRS3Bekenstein"]
+
+[leanOptions]
+autoImplicit = false
+
+[[require]]
+name = "NavaRobertsonIndependent"
+git = "https://github.com/naype888-cloud/nava-robertson-schrodinger.git"
+rev = "ca1fd39e6e71257a7df592e6953d562bc98a613d"
+
+[[lean_lib]]
+name = "NRS3Bekenstein"
