@@ -96,6 +96,45 @@ Notre formalisation démontre que ce résultat découle de la géométrie contin
 
 ---
 
+## 📐 Démonstration constructive en quatre étapes
+
+<div align="center">
+<picture><source media="(prefers-color-scheme: dark)" srcset="assets/oscuro/plaque_bekenstein_etapes.png"><img src="assets/claro/plaque_bekenstein_etapes.png" alt="L'échelle déductive en quatre étapes : des bits sur la frontière à la borne de Bekenstein" width="860"></picture>
+</div>
+
+### Étape 1 : Aire élémentaire d'un bit d'information
+
+> **Proposition 1.1 (Aire de la fibre de Minkowski).** La surface élémentaire encodant un bit d'information sur la frontière causale est déterminée par la fibre de Minkowski : A_bit = a² = 4 ℓ_P² ln 2. L'entropie de N bits s'écrit S = N ln 2.
+
+*Module formel :* [`NRS3Bekenstein/BoundaryBits.lean`](NRS3Bekenstein/BoundaryBits.lean) (`minkowskiFiberArea_pos`, `boundaryBitsEntropy_eq_log`, `bekenstein_bit_area_eq_fiber_area`).
+
+---
+
+### Étape 2 : Entropie de Bekenstein–Hawking
+
+> **Proposition 2.1 (Identification avec l'aire d'horizon).** L'entropie d'horizon satisfait identiquement la formule de Bekenstein–Hawking S_BH = A / (4 ℓ_P²) si et seulement si l'aire élémentaire par bit coïncide avec la fibre de Minkowski.
+
+*Module formel :* [`NRS3Bekenstein/BoundaryBits.lean`](NRS3Bekenstein/BoundaryBits.lean) (`bekenstein_hawking_entropy_eq_bits`, `bekenstein_hawking_iff_bit_area`).
+
+---
+
+### Étape 3 : Borne universelle d'entropie de Bekenstein
+
+> **Proposition 3.1 (Saturation pour les trous noirs de Schwarzschild).** Pour tout système physique confiné dans une région sphérique, l'entropie maximale vérifie la borne universelle de Bekenstein. Les trous noirs de Schwarzschild saturent exactement cette borne.
+
+*Module formel :* [`NRS3Bekenstein/BekensteinBound.lean`](NRS3Bekenstein/BekensteinBound.lean) (`bekensteinBound_pos`, `schwarzschildArea_eq`, `schwarzschild_saturates_bekenstein_bound`).
+
+---
+
+### Étape 4 : Plancher transverse discret et coupure UV
+
+> **Proposition 4.1 (Coupure ultraviolette et discrétisation de frontière).** Le nombre de bits transverses est fini et strictement positif. L'entropie de la coupe transverse élimine les divergences ultraviolettes du continuum.
+
+*Module formel :* [`NRS3Bekenstein/OperationalLimit.lean`](NRS3Bekenstein/OperationalLimit.lean) (`transverseCount_pos`, `transverseEntropy_eq_log`).  
+*Module formel (information) :* [`NRS3Bekenstein/BekensteinBound.lean`](NRS3Bekenstein/BekensteinBound.lean) (`maxInformationBits_boundaryArea`).
+
+---
+
 ## Résultats formels certifiés en Lean 4
 
 ### 1. Les bits de frontière et l'aire de la fibre de Minkowski
