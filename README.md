@@ -135,7 +135,7 @@ Notre formalisation démontre que ce résultat découle de la géométrie contin
 
 ### Étape 3 : Borne universelle d'entropie de Bekenstein
 
-> **Proposition 3.1 (Saturation pour les trous noirs de Schwarzschild).** Pour tout système physique confiné dans une région sphérique, l'entropie maximale vérifie la borne universelle de Bekenstein. Les trous noirs de Schwarzschild saturent exactement cette borne.
+> **Proposition 3.1 (Saturation pour les trous noirs de Schwarzschild).** La borne universelle de Bekenstein (1981) pour une région de rayon R et de masse M est S_bound = 2π R M / ℓ_P² ; le module la définit (l'inégalité S ≤ S_bound pour tout système est l'énoncé de Bekenstein, non démontré ici) et démontre que le trou noir de Schwarzschild la sature exactement : S_BH(A_s) = S_bound(R_s, M).
 
 <div align="center"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/oscuro/plaque_bekenstein_etape3.png"><img src="assets/claro/plaque_bekenstein_etape3.png" alt="Étape 3 : Borne universelle d'entropie de Bekenstein" width="860"></picture></div>
 
