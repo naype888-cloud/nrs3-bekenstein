@@ -42,10 +42,10 @@
 > **1 · Espace continu infini ℝ³ et Minkowski ℝ³ × S¹ avec fibre temporelle d'échelle a.**  
 > L'espace physique tridimensionnel est l'espace euclidien continu ouvert ℝ³.
 > La 4ᵉ dimension est la fibre temporelle propre sur S¹ à l'échelle du générateur `a` :
-> * Phase spatiale pure 3D (`d ≤ 3`) : `defectGram(d) = 0`, phase luminale sans masse (`dτ = 0`).
+> * Phase spatiale pure 3D (`d ≤ 3`) : `C_N(d) = 1`, phase luminale sans masse (`dτ = 0`).
 > * Parcours du temps propre (`d = 4`, `dτ > 0`) : active les matrices de Clifford et le défaut
->   irréductible de Szegő `C_M(4) = (94 − 42√5)/5 ≈ 0.017029 > 0`.
-> * Positivité hilbertienne : `⟨ψ|ψ⟩ ≥ 0 ⟹ defectGram(d) ≥ 0` (flèche causale stricte).
+>   irréductible de Szegő `C_N(4)² − 1 = (94 − 42√5)/5 ≈ 0.017029 > 0` (dépôt canonique, modules D8 et D20).
+> * Positivité hilbertienne : `⟨ψ|ψ⟩ ≥ 0 ⟹` défaut de Gram `≥ 0` (flèche causale stricte).
 >
 > **2 · Limite opérationnelle à l'échelle de Planck ℓ_P (pas de treillis spatial rigide).**  
 > Ce qui est quantifié est la résolution `d` du générateur de transport métrique `(T_d, P_d)`
@@ -75,7 +75,18 @@
 
 ---
 
-## Cadre géométrique : espace continu ℝ³ et variété Minkowski ℝ³ × S¹
+## ⚡ Résumé formel
+
+*Convention : les modules Lean travaillent en unités de Planck (G = c = ħ = 1) ; les formules affichées restituent k_B, ħ, c et G.*
+
+* L'aire d'un bit sur la fibre de Minkowski est `a² = 4 ℓ_P² log 2`, et `S_BH(N · a²) = N log 2` si et seulement si cette aire vaut un bit : [`NRS3Bekenstein/BoundaryBits.lean`](NRS3Bekenstein/BoundaryBits.lean) (`bekenstein_bit_area_eq_fiber_area`, `bekenstein_hawking_entropy_eq_bits`, `bekenstein_hawking_iff_bit_area`).
+* La borne universelle `2 π R M / ℓ_P²` est saturée par le trou noir de Schwarzschild, et la capacité vaut `N` bits : [`NRS3Bekenstein/BekensteinBound.lean`](NRS3Bekenstein/BekensteinBound.lean) (`schwarzschild_saturates_bekenstein_bound`, `maxInformationBits_boundaryArea`).
+* Toute coupe transverse opérationnelle porte au moins un bit, `a² ≤ (dy · dz · k) · a²` : [`NRS3Bekenstein/OperationalLimit.lean`](NRS3Bekenstein/OperationalLimit.lean) (`transverseCount_pos`, `operational_area_ge_single_bit`).
+* `Λ = 3 π / (ℓ² N log 2) > 0`, strictement décroissante en `N`, et l'aire d'horizon de de Sitter vaut `12 π / Λ = N a²` : [`NRS3Bekenstein/CosmologicalConstant.lean`](NRS3Bekenstein/CosmologicalConstant.lean) (`cosmologicalConstantBits_pos`, `cosmologicalConstantBits_strictAnti`, `horizonArea_cosmologicalConstantBits`).
+
+---
+
+## 🧭 Cadre géométrique : espace continu ℝ³ et variété Minkowski ℝ³ × S¹
 
 Dans la physique classique de la gravitation, Jacob Bekenstein (1947–2015, né à Mexico) a
 compris que l'information thermodynamique maximale ne remplit pas le volume d'une région, mais
@@ -88,9 +99,9 @@ Notre formalisation démontre que ce résultat découle de la géométrie contin
 * Le produit tensoriel `ℋ_{d³} = ℋ_d^{(x)} ⊗ ℋ_d^{(y)} ⊗ ℋ_d^{(z)}` assure la commutation
   des déplacements transverses `[O_X, O_Y] = 0`.
 * La variété d'espace-temps est Minkowski `ℝ³ × S¹` :
-  * Pour `d ≤ 3`, la phase luminale est sans masse (`defectGram = 0`, `dτ = 0`).
+  * Pour `d ≤ 3`, la phase luminale est sans masse (`C_N(d) = 1`, `dτ = 0`).
   * Pour `d = 4`, la progression le long de la fibre temporelle propre (`dτ > 0`) active la
-    structure spinorielle et le défaut de Szegő `C_M(4) > 0`.
+    structure spinorielle et le défaut de Szegő `C_N(4)² − 1 > 0`.
   * La surface minimale d'un bit de Bekenstein sur la frontière est l'aire de cette fibre :
     `a² = 4 ℓ_P² log 2`.
 
@@ -143,7 +154,14 @@ Notre formalisation démontre que ce résultat découle de la géométrie contin
 
 ---
 
-## Résultats formels certifiés en Lean 4
+## 📚 Catalogue des modules Lean
+
+| Module | Théorème principal | Signification | `sorry` |
+|:---|:---|:---|:---:|
+| [`NRS3Bekenstein/BoundaryBits.lean`](NRS3Bekenstein/BoundaryBits.lean) | `bekenstein_hawking_iff_bit_area` | `S_BH(N · a²) = N log 2` ⟺ `a² = 4 ℓ_P² log 2` | 0 |
+| [`NRS3Bekenstein/BekensteinBound.lean`](NRS3Bekenstein/BekensteinBound.lean) | `schwarzschild_saturates_bekenstein_bound` | Schwarzschild sature la borne de Bekenstein | 0 |
+| [`NRS3Bekenstein/OperationalLimit.lean`](NRS3Bekenstein/OperationalLimit.lean) | `operational_area_ge_single_bit` | Toute coupe opérationnelle a une aire `≥ a²` | 0 |
+| [`NRS3Bekenstein/CosmologicalConstant.lean`](NRS3Bekenstein/CosmologicalConstant.lean) | `horizonArea_cosmologicalConstantBits` | Aire d'horizon `12 π / Λ = N · a²` | 0 |
 
 ### 1. Les bits de frontière et l'aire de la fibre de Minkowski
 
@@ -194,40 +212,7 @@ les axiomes standard de ZFC : `propext`, `Classical.choice` et `Quot.sound`.
 
 ---
 
-## Compilation et certification du noyau
-
-Le projet utilise Lean 4 `v4.34.0` et Mathlib `v4.34.0` en mode 100% Mathlib pur.
-
-```bash
-lake exe cache get
-lake build
-lake env lean Verification/Axioms.lean   # uniquement propext, Classical.choice, Quot.sound
-```
-
-Spécifications formelles : 0 sorry, aucun axiome ad hoc, `autoImplicit = false`,
-lignes de 100 caractères au maximum.
-
----
-
-## Chronologie 1911–1973
-
-| Année | Événement | Dépôt associé |
-|---|---|---|
-| 1911 | Premier congrès Solvay : radiation et quanta | |
-| 1911–12 | Poincaré : la loi de Planck impose des niveaux discrets | [`nrs3-poincare`](https://github.com/naype888-cloud/nrs3-poincare) |
-| 1915–20 | Szegő : théorèmes limites pour matrices de Toeplitz | [Dépôt de base (RS^N, RS^N³)](https://github.com/naype888-cloud/nava-robertson-schrodinger) |
-| 1917–27 | Einstein et de Sitter : `Λ` ; Friedmann et Lemaître | [`nrs3-de-sitter`](https://github.com/naype888-cloud/nrs3-de-sitter) |
-| 1925–27 | Pauli : exclusion, couches `2n²`, matrices de spin | [`nrs3-pauli-dirac`](https://github.com/naype888-cloud/nrs3-pauli-dirac) |
-| 1927 | Relation d'incertitude de Heisenberg ; Solvay | |
-| 1928 | Dirac : matrices gamma `4 × 4` | [`nrs3-pauli-dirac`](https://github.com/naype888-cloud/nrs3-pauli-dirac) |
-| 1929 | van der Waerden : spineurs, `SL(2, ℂ)` | [`nrs3-uncertainty-cone`](https://github.com/naype888-cloud/nrs3-uncertainty-cone) |
-| **1929–30** | **Robertson et Schrödinger : l'inégalité d'incertitude** | **[Dépôt de base (RS^N, RS^N³)](https://github.com/naype888-cloud/nava-robertson-schrodinger)** |
-| 1945–46 | Mandelstam–Tamm ; Rao (1945), Cramér (1946) | [`nrs3-mandelstam-tamm-cramer-rao`](https://github.com/naype888-cloud/nrs3-mandelstam-tamm-cramer-rao) |
-| 1972–73 | **Bekenstein : entropie des trous noirs et bits sur la frontière** | **[RS^N³ · Bekenstein](https://github.com/naype888-cloud/nrs3-bekenstein)** (ce dépôt) |
-
----
-
-## La mosaïque des dépôts RS^N³
+## 🏛️ La mosaïque des dépôts RS^N³
 
 - [RS^N et RS^N³ — Le théorème de base](https://github.com/naype888-cloud/nava-robertson-schrodinger)
 - [RS^N³ · Mandelstam–Tamm et Cramér–Rao](https://github.com/naype888-cloud/nrs3-mandelstam-tamm-cramer-rao)
@@ -245,6 +230,39 @@ lignes de 100 caractères au maximum.
 
 ---
 
-## Licence
+## ⏱️ Chronologie 1911–1973
+
+| Année | Événement | Dépôt associé |
+|---|---|---|
+| 1911 | Premier congrès Solvay : radiation et quanta | |
+| 1911–12 | Poincaré : la loi de Planck impose des niveaux discrets | [`nrs3-poincare`](https://github.com/naype888-cloud/nrs3-poincare) |
+| 1915–20 | Szegő : théorèmes limites pour matrices de Toeplitz | [Dépôt de base (RS^N, RS^N³)](https://github.com/naype888-cloud/nava-robertson-schrodinger) |
+| 1917–27 | Einstein et de Sitter : `Λ` ; Friedmann et Lemaître | [`nrs3-de-sitter`](https://github.com/naype888-cloud/nrs3-de-sitter) |
+| 1925–27 | Pauli : exclusion, couches `2n²`, matrices de spin | [`nrs3-pauli-dirac`](https://github.com/naype888-cloud/nrs3-pauli-dirac) |
+| 1927 | Relation d'incertitude de Heisenberg ; Solvay | |
+| 1928 | Dirac : matrices gamma `4 × 4` | [`nrs3-pauli-dirac`](https://github.com/naype888-cloud/nrs3-pauli-dirac) |
+| 1929 | van der Waerden : spineurs, `SL(2, ℂ)` | [`nrs3-uncertainty-cone`](https://github.com/naype888-cloud/nrs3-uncertainty-cone) |
+| **1929–30** | **Robertson et Schrödinger : l'inégalité d'incertitude** | **[Dépôt de base (RS^N, RS^N³)](https://github.com/naype888-cloud/nava-robertson-schrodinger)** |
+| 1945–46 | Mandelstam–Tamm ; Rao (1945), Cramér (1946) | [`nrs3-mandelstam-tamm-cramer-rao`](https://github.com/naype888-cloud/nrs3-mandelstam-tamm-cramer-rao) |
+| 1972–73 | **Bekenstein : entropie des trous noirs et bits sur la frontière** | **[RS^N³ · Bekenstein](https://github.com/naype888-cloud/nrs3-bekenstein)** (ce dépôt) |
+
+---
+
+## 🛠️ Compilation et certification du noyau
+
+Le projet utilise Lean 4 `v4.34.0` et Mathlib `v4.34.0` en mode 100% Mathlib pur.
+
+```bash
+lake exe cache get
+lake build
+lake env lean Verification/Axioms.lean   # uniquement propext, Classical.choice, Quot.sound
+```
+
+Spécifications formelles : 0 sorry, aucun axiome ad hoc, `autoImplicit = false`,
+lignes de 100 caractères au maximum.
+
+---
+
+## 📜 Licence
 
 NRS Noncommercial License 1.0.0, voir [`LICENSE`](LICENSE). Auteur : Eduardo Nava Hernández.
