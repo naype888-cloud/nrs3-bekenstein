@@ -1,3 +1,5 @@
+<div lang="fr">
+
 <div align="center">
 
 # RS^N³ · Bekenstein — Bits on the Boundary
@@ -266,3 +268,6 @@ lignes de 100 caractères au maximum.
 ## 📜 Licence
 
 NRS Noncommercial License 1.0.0, voir [`LICENSE`](LICENSE). Auteur : Eduardo Nava Hernández.
+
+
+</div>
