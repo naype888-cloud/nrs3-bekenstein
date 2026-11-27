@@ -7,7 +7,7 @@
 ### L'entropie d'horizon et la borne universelle lues sur la fibre de Minkowski ℝ³ × S¹
 
 **Eduardo Nava Hernández**  
-*Vérification formelle certifiée en Lean 4 · 0 sorry · Mathlib (<code>ZFC</code>)*
+*Vérification formelle certifiée en Lean 4 · `0 sorry` · Mathlib (<code>ZFC</code>)*
 
 [![Lean 4](https://img.shields.io/badge/Lean_4-v4.35.0-blue.svg?style=flat-square)](https://leanprover.github.io/)
 [![Mathlib](https://img.shields.io/badge/Mathlib-vérifié-2ea44f.svg?style=flat-square)](https://github.com/leanprover-community/mathlib4)
@@ -44,17 +44,17 @@
 >
 > **1 · Espace continu infini ℝ³ et Minkowski ℝ³ × S¹ avec fibre temporelle d'échelle a.**  
 > L'espace physique tridimensionnel est l'espace euclidien continu ouvert ℝ³.
-> La 4ᵉ dimension est la fibre temporelle propre sur S¹ à l'échelle du générateur `a` :
-> * Phase spatiale pure 3D (`d ≤ 3`) : `C_N(d) = 1`, phase luminale sans masse (`dτ = 0`).
+> La 4ᵉ dimension est la fibre temporelle propre sur S¹ à l'échelle du générateur a :
+> * Phase spatiale pure 3D (d ≤ 3) : `C_N(d) = 1`, phase luminale sans masse (`dτ = 0`).
 > * Parcours du temps propre relativiste (`d = 4`, `dτ > 0`) : active les matrices de Clifford et le défaut
 >   irréductible de Szegő `C_N(4)² − 1 = (94 − 42√5)/5 ≈ 0.017029 > 0` (dépôt canonique, modules D8 et D20).
-> * Positivité hilbertienne : `⟨ψ|ψ⟩ ≥ 0 ⟹` défaut de Gram `≥ 0` (flèche causale stricte).
+> * Positivité hilbertienne : ⟨ψ|ψ⟩ ≥ 0 ⟹ défaut de Gram ≥ 0 (flèche causale stricte).
 >
 > **2 · Limite opérationnelle à l'échelle de Planck ℓ_P (pas de treillis spatial rigide).**  
-> Ce qui est quantifié est la résolution `d` du générateur de transport métrique `(T_d, P_d)`
+> Ce qui est quantifié est la résolution d du générateur de transport métrique `(T_d, P_d)`
 > sur les trois axes continus indépendants : `ℋ_{d³} = ℋ_d^{(x)} ⊗ ℋ_d^{(y)} ⊗ ℋ_d^{(z)}`.
 > La longueur de Planck `ℓ_P` pose la limite opérationnelle inférieure de résolution :
-> * Nombre minimal de bits opérationnels : `1 ≤ transverseCount dy dz k`
+> * Nombre minimal de bits opérationnels : 1 ≤ transverseCount dy dz k
 >   (`transverseCount_pos`).
 > * Borne inférieure d'aire opérationnelle : `minkowskiFiberArea lp ≤ transverseArea lp dy dz k`
 >   (`operational_area_ge_single_bit`).
@@ -66,11 +66,11 @@
 > Bekenstein–Hawking sature identiquement la borne universelle de Bekenstein :
 > `S_BH(schwarzschildArea M) = bekensteinBound (schwarzschildRadius M) M lp = 4 π M² / ℓ_P²`
 > (`schwarzschild_saturates_bekenstein_bound`).
-> La capacité holographique en bits booléens vaut exactement `N` bits
+> La capacité holographique en bits booléens vaut exactement N bits
 > (`maxInformationBits_boundaryArea`).
 >
 > **4 · Constante cosmologique positive et aire d'horizon de de Sitter.**  
-> L'entropie des `N` bits de frontière détermine la constante cosmologique de l'espace :
+> L'entropie des N bits de frontière détermine la constante cosmologique de l'espace :
 > `cosmologicalConstantBits N ℓ = 3π / (ℓ² N log 2) > 0`
 > (`cosmologicalConstantBits_pos`).
 > L'aire d'horizon de de Sitter associée coïncide identiquement avec l'aire de frontière `N · a²`
@@ -83,9 +83,9 @@
 *Convention : les modules Lean travaillent en unités de Planck (G = c = ħ = 1) ; les formules affichées restituent k_B, ħ, c et G.*
 
 * L'aire d'un bit sur la fibre de Minkowski est `a² = 4 ℓ_P² log 2`, et `S_BH(N · a²) = N log 2` si et seulement si cette aire vaut un bit : [`NRS3Bekenstein/BoundaryBits.lean`](NRS3Bekenstein/BoundaryBits.lean) (`bekenstein_bit_area_eq_fiber_area`, `bekenstein_hawking_entropy_eq_bits`, `bekenstein_hawking_iff_bit_area`).
-* La borne universelle `2 π R M / ℓ_P²` est saturée par le trou noir de Schwarzschild, et la capacité vaut `N` bits : [`NRS3Bekenstein/BekensteinBound.lean`](NRS3Bekenstein/BekensteinBound.lean) (`schwarzschild_saturates_bekenstein_bound`, `maxInformationBits_boundaryArea`).
-* Toute coupe transverse opérationnelle porte au moins un bit, `a² ≤ (dy · dz · k) · a²` : [`NRS3Bekenstein/OperationalLimit.lean`](NRS3Bekenstein/OperationalLimit.lean) (`transverseCount_pos`, `operational_area_ge_single_bit`).
-* `Λ = 3 π / (ℓ² N log 2) > 0`, strictement décroissante en `N`, et l'aire d'horizon de de Sitter vaut `12 π / Λ = N a²` : [`NRS3Bekenstein/CosmologicalConstant.lean`](NRS3Bekenstein/CosmologicalConstant.lean) (`cosmologicalConstantBits_pos`, `cosmologicalConstantBits_strictAnti`, `horizonArea_cosmologicalConstantBits`).
+* La borne universelle `2 π R M / ℓ_P²` est saturée par le trou noir de Schwarzschild, et la capacité vaut N bits : [`NRS3Bekenstein/BekensteinBound.lean`](NRS3Bekenstein/BekensteinBound.lean) (`schwarzschild_saturates_bekenstein_bound`, `maxInformationBits_boundaryArea`).
+* Toute coupe transverse opérationnelle porte au moins un bit, a² ≤ (dy · dz · k) · a² : [`NRS3Bekenstein/OperationalLimit.lean`](NRS3Bekenstein/OperationalLimit.lean) (`transverseCount_pos`, `operational_area_ge_single_bit`).
+* `Λ = 3 π / (ℓ² N log 2) > 0`, strictement décroissante en N, et l'aire d'horizon de de Sitter vaut `12 π / Λ = N a²` : [`NRS3Bekenstein/CosmologicalConstant.lean`](NRS3Bekenstein/CosmologicalConstant.lean) (`cosmologicalConstantBits_pos`, `cosmologicalConstantBits_strictAnti`, `horizonArea_cosmologicalConstantBits`).
 
 ---
 
@@ -98,11 +98,11 @@ est encodée sur sa frontière à raison d'une fraction d'aire de Planck par bit
 Notre formalisation démontre que ce résultat découle de la géométrie continue fondamentale :
 * L'espace euclidien tridimensionnel ℝ³ est ouvert, infini et continu.
 * Les observables de transport métrique `(T_d, P_d)` échantillonnent la dynamique sur chaque
-  axe avec une résolution hilbertienne `d`.
+  axe avec une résolution hilbertienne d.
 * Le produit tensoriel `ℋ_{d³} = ℋ_d^{(x)} ⊗ ℋ_d^{(y)} ⊗ ℋ_d^{(z)}` assure la commutation
   des déplacements transverses `[O_X, O_Y] = 0`.
 * La variété d'espace-temps est Minkowski `ℝ³ × S¹` :
-  * Pour `d ≤ 3`, la phase luminale est sans masse (`C_N(d) = 1`, `dτ = 0`).
+  * Pour d ≤ 3, la phase luminale est sans masse (`C_N(d) = 1`, `dτ = 0`).
   * Pour `d = 4`, la progression le long de la fibre temporelle propre (`dτ > 0`) active la
     structure spinorielle et le défaut de Szegő `C_N(4)² − 1 > 0`.
   * La surface minimale d'un bit de Bekenstein sur la frontière est l'aire de cette fibre :
@@ -223,7 +223,7 @@ les axiomes standard de ZFC : `propext`, `Classical.choice` et `Quot.sound`.
 | [`01 · nava-robertson-schrodinger`](https://github.com/naype888-cloud/nava-robertson-schrodinger) | Le canon : l'incertitude élémentaire dimensionnelle sur le cube ouvert, ℂᵈ ⊗ ℂᵈ ⊗ ℂᵈ |
 | [`02 · Proper-Time-General-Relativity`](https://github.com/naype888-cloud/Proper-Time-General-Relativity) | Le temps compte les pas : τ = 1/(φ\|t\|) à quatre sites ; masse effective, équivalence, gravitation |
 | [`03 · nrs3-mandelstam-tamm-cramer-rao`](https://github.com/naype888-cloud/nrs3-mandelstam-tamm-cramer-rao) | Mandelstam–Tamm et Cramér–Rao : aucun état n'est orthogonal à lui-même avant πħ/(2ΔE) |
-| [`04 · YM-By-Perelmans-surgery-method`](https://github.com/naype888-cloud/YM-By-Perelmans-surgery-method) | Yang–Mills sur réseau : loi d'aire uniforme, matrice de transfert, défaut de fibre (0 sorry) |
+| [`04 · YM-By-Perelmans-surgery-method`](https://github.com/naype888-cloud/YM-By-Perelmans-surgery-method) | Yang–Mills sur réseau : loi d'aire uniforme, matrice de transfert, défaut de fibre (`0 sorry`) |
 | [`05 · nrs3-tightbinding`](https://github.com/naype888-cloud/nrs3-tightbinding) | La chaîne de Physlib, le cube ouvert et la table périodique (H–Og), un cube 3D par élément |
 | [`06 · nrs3-cristales`](https://github.com/naype888-cloud/nrs3-cristales) | Cristaux : la symétrie donne la forme de Σ et Ω, le spectre donne la taille |
 | [`07 · nrs3-completude`](https://github.com/naype888-cloud/nrs3-completude) | Complétude constructive et limites spectrales par Robertson–Fiedler–Niven–Szegő |
@@ -234,7 +234,7 @@ les axiomes standard de ZFC : `propext`, `Classical.choice` et `Quot.sound`.
 | [`12 · nrs3-penrose`](https://github.com/naype888-cloud/nrs3-penrose) | Effondrement gravitationnel de Diósi–Penrose : temps de décohérence par auto-énergie |
 | [`13 · nrs3-rovelli-lqg`](https://github.com/naype888-cloud/nrs3-rovelli-lqg) | Gravité quantique à boucles : spectre d'aire discrète, opérateur de surface et saturation de spin |
 | [`14 · nrs3-uncertainty-cone`](https://github.com/naype888-cloud/nrs3-uncertainty-cone) | Cône de lumière futur et cercle de Minkowski : structure causale sous revêtement SL(2, ℂ) |
-| [`15 · lean4-commits`](https://github.com/naype888-cloud/lean4-commits) | 53 PRs fusionnées dans leanprover-community/physlib : catalogue de preuves formelles, 0 sorry, ZFC |
+| [`15 · lean4-commits`](https://github.com/naype888-cloud/lean4-commits) | 53 PRs fusionnées dans leanprover-community/physlib : catalogue de preuves formelles, `0 sorry`, ZFC |
 ---
 
 ## ⏱️ Chronologie 1911–1973
@@ -265,7 +265,7 @@ lake build
 lake env lean Verification/Axioms.lean   # uniquement propext, Classical.choice, Quot.sound
 ```
 
-Spécifications formelles : 0 sorry, aucun axiome ad hoc, `autoImplicit = false`,
+Spécifications formelles : `0 sorry`, aucun axiome ad hoc, `autoImplicit = false`,
 lignes de 100 caractères au maximum.
 
 ---
