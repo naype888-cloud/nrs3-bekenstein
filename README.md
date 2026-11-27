@@ -3,9 +3,7 @@
 <div align="center">
 <p align="center">
   <img src="https://wikimedia.org" alt="Google Translate" width="24" height="24" style="vertical-align: middle;"/>
-  <b>Traducción revisada y masterizada</b>
 </p>
-
 <picture><source media="(prefers-color-scheme: dark)" srcset="assets/oscuro/titre_bekenstein.png"><img src="assets/claro/titre_bekenstein.png" alt="RS^N³ · Bekenstein — Bits sur la frontière" width="860"></picture>
 **"RS<sup>N</sup>³ · Bekenstein — Bits sur la frontière"**
 ### L'entropie d'horizon et la borne universelle lues sur la fibre de Minkowski ℝ³ × S¹
