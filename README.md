@@ -2,7 +2,8 @@
 
 <div align="center">
 
-# RS<sup>N</sup>³ · Bekenstein — Bits sur la frontière
+<picture><source media="(prefers-color-scheme: dark)" srcset="assets/oscuro/titre_bekenstein.png"><img src="assets/claro/titre_bekenstein.png" alt="RS^N³ · Bekenstein — Bits sur la frontière" width="860"></picture>
+**"RS<sup>N</sup>³ · Bekenstein — Bits sur la frontière"**
 ### L'entropie d'horizon et la borne universelle lues sur la fibre de Minkowski ℝ³ × S¹
 
 **Eduardo Nava Hernández**  
