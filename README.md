@@ -2,7 +2,7 @@
 
 <div align="center">
 <picture><source media="(prefers-color-scheme: dark)" srcset="assets/oscuro/titre_bekenstein.png"><img src="assets/claro/titre_bekenstein.png" alt="RS^N³ · Bekenstein — Bits sur la frontière" width="860"></picture>
-**"RS<sup>N</sup>³ · Bekenstein — Bits sur la frontière"**
+"RS<sup>N</sup>³ · Bekenstein — Bits sur la frontière"
 ### L'entropie d'horizon et la borne universelle lues sur la fibre de Minkowski ℝ³ × S¹
 
 **Eduardo Nava Hernández**  
@@ -17,7 +17,7 @@
 
 ---
 
-> ### 🏛️ Les bits de Bekenstein sur la frontière et la fibre de Minkowski
+> 🏛️ **Les bits de Bekenstein sur la frontière et la fibre de Minkowski
 >
 > En thermodynamique des trous noirs (Jacob Bekenstein 1972–1973), l'entropie maximale
 > d'une région est proportionnelle à l'aire de sa frontière, mesurée en bits d'information :
